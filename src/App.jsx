@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import HomePage from "../src/pages/HomePage";
 import HeaderAdmin from "./components/admin/HeaderAdmin";
 import AdminHome from "../src/pages/admin/AdminHome";
 import Productos from "../src/pages/admin/Productos";
@@ -17,11 +18,17 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Página inicial */}
+        <Route path="/" element={<HomePage />} />
+
         {/* Rutas del Administrador */}
         <Route path="/admin/*" element={<AdminArea />} />
 
         {/* Rutas del Usuario */}
-        <Route path="/*" element={<UserArea />} />
+        <Route path="/user/*" element={<UserArea />} />
+
+        {/* Ruta por defecto o no encontrada */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
